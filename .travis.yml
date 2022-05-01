@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - "node"
+  - "lts/*"
+
+os:
+  - linux
+  - osx
+
+compiler:
+  - gcc
+  - clang
+
+# env:
+#   - CXX=g++-7
+
+# addons:
+#   apt:
+#     sources:
+#       - ubuntu-toolchain-r-test
+#     packages:
+#       - g++-7
+

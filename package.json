@@ -1,0 +1,68 @@
+{
+    "name": "mmap-io-napi",
+    "version": "1.1.8",
+    "license": "MIT",
+    "author": {
+        "name": "Oscar Campbell",
+        "email": "oscar@campbell.nu",
+        "url": "https://github.com/ozra"
+    },
+    "description": "io.js/node.js mmap bindings revisited.",
+    "homepage": "https://github.com/ozra/mmap-io",
+    "keywords": [
+        "low level",
+        "file",
+        "memory mapped",
+        "mmap",
+        "advise",
+        "sync",
+        "shared memory",
+        "C++",
+        "performance"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ozra/mmap-io.git"
+    },
+    "bugs": {
+        "url": "http://github.com/ozra/mmap-io/issues"
+    },
+    "main": "mmap-io.js",
+    "files": [
+        "binding.gyp",
+        "LICENSE",
+        "dist",
+        "prebuilds",
+        "mmap-io.d.ts",
+        "mmap-io.js",
+        "package.json",
+        "package-lock.json",
+        "README.md",
+        "src"
+    ],
+    "scripts": {
+        "clean": "rm -rf build dist",
+        "build": "npm run build-addon && npm run build-es && npm run test",
+        "build-addon": "node-gyp-build",
+        "build-es": "tsc && cp ./dist/mmap-io.d.ts ./",
+        "prepublishOnly": "npm run build",
+        "install": "npm run build-addon",
+        "test": "lsc -o ./dist/ -b -c ./src/test.ls && ((which nodejs && nodejs ./dist/test.js) || node ./dist/test.js)",
+        "watch": "while true; do (npm run build; inotifywait -qre close_write,moved_to --exclude '\\.git' ./src/; ) done;",
+        "prebuild:arm": "env-cmd -f arm.env prebuildify --napi -t 14.16.0 --arch arm",
+        "prebuild:all": "prebuildify --napi -t 14.16.0"
+    },
+    "devDependencies": {
+        "@types/node": "^11.10.5",
+        "livescript": "^1.6.0",
+        "prebuildify": "^5.0.0",
+        "tsc": "^2.0.4",
+        "typescript": "^4.6.4"
+    },
+    "dependencies": {
+        "env-cmd": "^10.1.0",
+        "errno": "*",
+        "node-addon-api": "^4.3.0",
+        "node-gyp-build": "^4.4.0"
+    }
+}

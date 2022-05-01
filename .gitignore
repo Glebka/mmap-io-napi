@@ -1,0 +1,16 @@
+# Compiled target .js files (build from LS) and deps
+mmap-io.d.ts
+test.js
+mmap-io.s
+tmp-mmap-file
+
+build/
+node_modules/
+
+# Project / IDE-files
+.vscode/
+
+GPATH
+GRTAGS
+GTAGS
+
