@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const mmap_lib_raw_ = require("node-gyp-build")();
+const mmap_lib_raw_ = require("node-gyp-build")(__dirname + '/..');
 // snatch the raw C++-sync func
 const raw_sync_fn_ = mmap_lib_raw_.sync_lib_private__;
 // Hide the original C++11 func from users

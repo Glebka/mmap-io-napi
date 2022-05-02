@@ -1,4 +1,4 @@
-const mmap_lib_raw_ = require("node-gyp-build")();
+const mmap_lib_raw_ = require("node-gyp-build")(__dirname + '/..');
 
 type FileDescriptor = number
 
