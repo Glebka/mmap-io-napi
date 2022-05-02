@@ -43,7 +43,7 @@
     "scripts": {
         "clean": "rm -rf build dist",
         "build": "npm run build-addon && npm run build-es && npm run test",
-        "build-addon": "node-gyp-build",
+        "build-addon": "node-gyp-build-test || true",
         "build-es": "tsc && cp ./dist/mmap-io.d.ts ./",
         "prepublishOnly": "npm run build",
         "install": "npm run build-addon",
